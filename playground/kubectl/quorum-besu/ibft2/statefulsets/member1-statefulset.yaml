@@ -69,7 +69,7 @@ spec:
             - "curl -X GET --connect-timeout 30 --max-time 10 --retry 6 --retry-delay 0 --retry-max-time 300 ${BESU_VALIDATOR1_SERVICE_HOST}:8545/liveness"
       containers:
         - name: member1-tessera
-          image: quorumengineering/tessera:latest
+          image: quorumengineering/tessera:21.4.0
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -173,7 +173,7 @@ spec:
               EOF
 
                   cat /data/tm/tessera-config-09.json
-                  /tessera/bin/tessera -configfile /data/tm/tessera-config-09.json
+                  java -Xms128M -Xmx128M -jar /tessera/tessera-app.jar -configfile /data/tm/tessera-config-09.json
 
         - name: member1-besu
           image: hyperledger/besu:21.1.2
