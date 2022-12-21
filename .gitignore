@@ -32,3 +32,4 @@ site/
 /kubernetes/besu-*.tar.gz
 .envrc
 .lh
+.task

@@ -603,11 +603,7 @@ alertmanager:
     ## This defaults to non root user with uid 1000 and gid 2000. *v1.PodSecurityContext  false
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
     ##
-    securityContext:
-      runAsGroup: 2000
-      runAsNonRoot: true
-      runAsUser: 1000
-      fsGroup: 2000
+    securityContext: {}
 
     ## ListenLocal makes the Alertmanager server listen on loopback, so that it does not bind against the Pod IP.
     ## Note this is only for the Alertmanager UI, not the gossip communication.
@@ -1508,10 +1504,7 @@ prometheusOperator:
       ## This defaults to non root user with uid 2000 and gid 2000. *v1.PodSecurityContext  false
       ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
       ##
-      securityContext:
-        runAsGroup: 2000
-        runAsNonRoot: true
-        runAsUser: 2000
+      securityContext: {}
 
     # Use certmanager to generate webhook certs
     certManager:
@@ -1660,9 +1653,9 @@ prometheusOperator:
   #   memory: 100Mi
 
   # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
-  # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
+  # because control-planehostnetwork-v2 managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
   ##
-  hostNetwork: false
+  #hostNetwork: false
 
   ## Define which Nodes the Pods are scheduled on.
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -2567,11 +2560,7 @@ prometheus:
     ## This defaults to non root user with uid 1000 and gid 2000.
     ## https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md
     ##
-    securityContext:
-      runAsGroup: 2000
-      runAsNonRoot: true
-      runAsUser: 1000
-      fsGroup: 2000
+    securityContext: {}
 
     ## Priority class assigned to the Pods
     ##
